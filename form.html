@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" type="image/png" href="img/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="img/favicon-16x16.png" sizes="16x16" />
+
+    <title>Form</title>
+</head>
+
+<body>
+    <!-- Dropdown / Combo Box / List Box -->
+    <!-- Form HTML4 -->
+    <form>
+        <table cellspacing="7">
+            <tr>
+                <td>
+                    <label for="username">Username</label>
+                </td>
+                <td> : </td>
+                <td>
+                    <input type="text" id="username">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="password">Password</label>
+                </td>
+                <td> : </td>
+                <td>
+                    <input type="password" id="password">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="opsi">Game</label>
+                </td>
+                <td> : </td>
+                <td>
+                    <select name="opsi" id="opsi">
+                        <option value="skyrim">Skyrim</option>
+                        <option value="farcry3">Far Cry 3</option>
+                        <option value="hotline_miami">Hotline Miami</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="komentar">Komentar</label>
+                </td>
+                <td> : </td>
+                <td>
+                    <textarea name="komentar" id="komentar"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <input type="radio" name="gender" id="pria"><label for="pria">Guy</label>
+                    <input type="radio" name="gender" id="wanita"><label for="wanita">Wanita</label>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <input type="checkbox" id="html" name="coding"><label for="html">HTML</label>
+                    <input type="checkbox" id="css" name="coding"><label for="css">CSS</label>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+
+                    <!-- Di HTML baru sebaiknya tombol tidak dibuat menggunakan input -->
+                    <input type="button" value="Button HTML4">
+                    <input type="reset">
+                    <input type="submit">
+
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <button type="button">Button HTML5</button>
+                    <button type="reset">Reset HTML5</button>
+                    <button type="submit">Submit HTML5</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+
+</html>
