@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" type="image/png" href="../img/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="../img/favicon-16x16.png" sizes="16x16" />
+
+    <title>Image Elements</title>
+</head>
+
+<body>
+    <!-- Untuk Menampilkan gambar yang merupakan bagian dari konten, bukan ornamen/penghias halaman. -->
+
+    <!-- src merupakan atribut wajib -->
+    <!-- Gambar yang bisa digunakan : .png, .jpg, .jpeg, .gif, .svg, dan yang teroptimasi untuk website yaitu .webp dan .avif -->
+
+    <!-- alt = Alternative Text -->
+    <!-- Ketika gambar tidak bisa tampil, untuk dibaca Screen Reader, dan untuk SEO -->
+    <!-- Bisa juga digunakan untuk tulis url jika gambarnya adalah link -->
+
+    <!-- Atribut title adalah tambahan Atribut alt. Hanya gunakan Atribut title jika ada Atribut alt. Atribut title tidak dibaca screen reader. -->
+
+    <!-- Atribut srcset digunakan untuk membuat halaman responsive -->
+    <!-- Bisa digunakan untuk memilih gambar yang berbeda berdasarkan syarat tertentu -->
+    <!-- Bisa berdasarkan lebar layar atau kerapatan pixelnya (Pixel Density) -->
+
+    <!-- Atribut sizes berguna untuk mengatur ukuran gambar yang berbeda berdasarkan media condition / media query (media query biasanya melalui CSS) -->
+    <!-- 50vw = 50 viewport width (setengah lebar layar) -->
+    <!-- BALIK LAGI HABIS BELAJAR MEDIA QUERY -->
+
+    <!-- Atribut loading menentukan bagaimana gambar di-load oleh browser -->
+    <!-- eager (default) = gambar di load di awal -->
+    <!-- lazy = gambar di load saat gambar terlihat di layar -->
+    <img src="../img/Small.png" alt="&nbsp;Gambar" srcset="
+        ../img/Small.jpg 700w, 
+        ../img/Medium.jpg 1000w, 
+        ../img/Big.jpg 1500w" sizes="(min-width: 1550px) 50vw">
+
+    <!-- Picture untuk gambar yang berbeda di layar yang berbeda, mirip Atribut srcset dan sizes -->
+    <!-- Bertujuan untuk menghemat bandwith dan mempercepat load time -->
+    <!-- Bisa juga untuk Art Direction untuk menampilkan gambar yang berbeda di lebar layar yang berbeda -->
+    <!-- Wajib ada Tag <img> di dalam <picture> supaya jika browsernya tidak mendukung <picture> yang digunakan adalah <img> -->
+    <picture>
+        <source media="(min-width: 1000px)" srcset="../img/Medium.jpg">
+        <img src="../img/Small.jpg" alt="&nbsp;Gambar Small">
+    </picture>
+
+    <!-- Figure merepresentasikan konten yang berdiri sendiri tanpa mempengaruhi flow halaman, jadi kalau kontennya hilang, halamannya masih bisa di akses. -->
+    <!-- Bisa gambar, ilustrasi, diagram, ataupun code snippet -->
+    <!-- Biasanya gambar yang memiliki caption menggunakan <figcaption> -->
+    <figure>
+        <img src="../img/Small.jpg" alt="&nbsp;Gambar Kecil">
+        <figcaption>Drowned Kid Meme</figcaption>
+    </figure>
+
+    <br>
+
+    <img src="../img/Small.png" alt="&nbsp;Gambar" srcset="
+        ../img/Small.jpg 1x, 
+        ../img/Medium.jpg 2x, 
+        ../img/Big.jpg 3x" style="margin-top: 1500px;" loading="lazy">
+</body>
+
+</html>
