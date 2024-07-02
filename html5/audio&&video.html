@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" type="image/png" href="../img/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="../img/favicon-16x16.png" sizes="16x16" />
+
+    <title>Audio & Video</title>
+</head>
+
+<body>
+    <!-- Atribut conrols untuk menampilkan conrols -->
+    <!-- Kalau tidak menggunakan Atribut conrols, maka diasumsikan akan dijalankan/dikendalikan menggunakan javascirpt -->
+
+    <!-- Atribut preload = audio akan di load di awal, karena default-nya audio di load ketika tombol play di klik. -->
+
+    <!-- Muted -->
+    <!-- <audio src="../audio/Minmi - Shiki No Uta (English Cover by Sapphire).mp3" controls muted></audio> -->
+
+    <!-- File audio yang di dukung : .mp3, .wav, .ogg -->
+    <!-- .wav kualitas audio lebih bagus, file lebih gede -->
+    <!-- .ogg jarang di pake, tapi size lebih kecil dari .mp3 -->
+    <audio src="../audio/Minmi - Shiki No Uta (English Cover by Sapphire).mp3" controls></audio>
+
+    <!-- Bisa juga dimasukkan ke dalam Tag <figure> -->
+    <!-- Bisa pake beberapa Tag <source> untuk memilih audio -->
+    <!-- Tag <source> yang pertama ditemukan dan di support file-nya yang akan digunakan (misal 3 file .mp3, .wav, dan .ogg tapi audio nya sama) -->
+    <figure>
+        <figcaption>
+            Minmi - Shiki No Uta (English Cover by Sapphire)
+        </figcaption>
+
+        <!-- Browser-browser sekarang tidak memperbolehkan audio untuk autoplay karena dianggap mengganggu user, jadi audio akan di autoplay ketika user sudah berinteraksi dengan halaman -->
+        <audio controls loop autoplay>
+            <source src="../audio/Minmi - Shiki No Uta (English Cover by Sapphire).ogg" type="audio/ogg">
+            <source src="../audio/Minmi - Shiki No Uta (English Cover by Sapphire).mp3" type="audio/mpeg">
+            Browser tidak mendukung tag <code>audio</code>
+        </audio>
+    </figure>
+
+    <!-- Tag <video> bisa untuk menampilkan video maupun audio -->
+    <!-- Atribut poster berfungsi untuk menampilkan sebuah gambar untuk menggantikan jika video tidak bisa tampil -->
+    <figure>
+        <figcaption>
+            Naruto Video
+        </figcaption>
+
+        <!-- Browser mau autoplay kalau videonya mute -->
+        <video width="250" poster="../img/Naruto.jpg" controls loop autoplay muted>
+            <source src="../video/Naruto.webm" type="video/webm">
+            <source src="../video/Naruto.mp4" type="video/mp4">
+
+            <!-- Tag track dapat berupa Subtitles, Captions, Chapters, Metadata, dan Descriptions (Berguna untuk Screen Reader) -->
+            <!-- .vtt = Video Text Tracks -->
+            <track src="../video/track/subtitles en.vtt" kind="subtitles" title="English" srclang="en">
+            <track src="../video/track/subtitles id.vtt" kind="" title="Bahasa Indonesia" srclang="id">
+
+            Browser tidak mendukung tag <code>video</code>
+        </video>
+    </figure>
+
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/gWH6ye1gXww?si=IxpQc0UW_FGpWK5z"
+        title="YouTube video player" frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+    </iframe>
+
+    <video src="../video/Naruto.mp4" controls></video>
+</body>
+
+</html>
