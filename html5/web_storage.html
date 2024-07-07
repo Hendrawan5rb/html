@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" type="image/png" href="../img/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="../img/favicon-16x16.png" sizes="16x16" />
+
+    <title>Web Storage</title>
+    <style>
+        a {
+            color: inherit;
+        }
+
+        .dark-mode {
+            background-color: #222;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <!--
+    Web Storage API adalah Web API yang menyediakan mekanisme untuk menyimpan nilai (key/value) yang lebih intuitif daripada cookie
+
+    Ada 2 tipe Web Storage menurut waktu kedaluwarsanya yaitu : 
+    - Local Storage
+    - Session Storage
+
+    Web Storage contohnya digunakan untuk : 
+    - Preferensi User (misal Dark mode/Light mode)
+    - Setting & Konfigurasi (misal Bahasa)
+    - Score & Leaderboard pada game
+    - Posisi video/audio terakhir Youtube
+
+    Jangan digunakan untuk : 
+    - Data sensitif
+    - Otentikasi
+    -->
+
+    <h1>Halo, Hendrawan!</h1>
+
+    <a href="" onclick="gantiNama()">Ganti Nama</a>
+
+    <br><br>
+
+    <a href="" onclick="hapusNama()">Hapus Nama</a>
+
+    <br><br>
+
+    <a href="" id="toogle">Dark Mode</a>
+
+    <br><br>
+
+    <a href="" onclick="reset()">Reset</a>
+
+    <figure>
+        <img src="../img/difference.webp" alt="&nbsp;difference" width="600">
+        <figcaption>
+            <a href="https://rohanshakya254.medium.com/javascript-local-storage-vs-session-storage-vs-cookies-314d8526b0b2"
+                target="_blank">
+                https://rohanshakya254.medium.com/javascript-local-storage-vs-session-storage-vs-cookies-314d8526b0b2
+            </a>
+        </figcaption>
+    </figure>
+
+    <script>
+        const judul = document.querySelector('h1');
+
+        let nama = localStorage.getItem('nama');
+        // let nama = sessionStorage.getItem('nama');
+
+        if (!nama) {
+            nama = prompt('Masukkan nama : ');
+            localStorage.setItem('nama', nama);
+            // sessionStorage.setItem('nama', nama);
+        }
+
+        judul.innerHTML = `Halo, ${nama}`;
+
+        const gantiNama = (e) => {
+            nama = prompt('Masukkan nama baru : ');
+            localStorage.setItem('nama', nama);
+
+            e.preventDefault();
+        }
+
+        const hapusNama = (e) => {
+            localStorage.removeItem('nama');
+
+            e.preventDefault();
+        }
+
+        const reset = (e) => {
+            localStorage.clear();
+
+            e.preventDefault();
+        }
+
+        const toogle = document.querySelector('#toogle');
+        let theme = localStorage.getItem('theme');
+
+        if (!theme) {
+            localStorage.setItem('theme', 'light');
+        }
+
+        const darkMode = () => {
+            document.body.classList.add('dark-mode');
+            toogle.innerHTML = 'Light Mode';
+            localStorage.setItem('theme', 'dark');
+        }
+
+        const lightMode = () => {
+            document.body.classList.remove('dark-mode');
+            toogle.innerHTML = 'Dark Mode';
+            localStorage.setItem('theme', 'light');
+        }
+
+        if (theme == 'dark') {
+            darkMode();
+        }
+
+        toogle.addEventListener('click', function (e) {
+            theme = localStorage.getItem('theme');
+
+            if (theme === 'light') {
+                darkMode();
+            } else {
+                lightMode();
+            }
+
+            e.preventDefault();
+        });
+    </script>
+</body>
+
+</html>
