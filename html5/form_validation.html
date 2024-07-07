@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" type="image/png" href="../img/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="../img/favicon-16x16.png" sizes="16x16" />
+
+    <title>Form Validation</title>
+
+    <style>
+        /* CSS validation pseudo-class */
+        /*
+        :valid
+        :invalid
+        :required
+        */
+
+        input:invalid,
+        input:required:invalid {
+            border: none;
+            outline: 2px solid red;
+            border-radius: 2px;
+        }
+
+        input:valid,
+        input:required {
+            border: 1px solid black;
+            outline: inherit;
+            border-radius: inherit;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Form Validation ada 2 yaitu : 
+    1. Client Side Validation : 
+        - Menggunakan HTML5
+        - Menggunakan Javascript
+    2. Server Side Validation
+    -->
+
+    <!-- Atribut novalidate untuk testing -->
+    <!-- <form novalidate> -->
+    <form>
+        <div>
+            <label for="name">Nama : </label>
+
+            <!-- autocomplete juga bisa di form -->
+            <input type="text" name="name" id="name" autocomplete="off" minlength="5" maxlength="10"
+                oninvalid="this.setCustomValidity('Ini harus diisi')" oninput="this.setCustomValidity('')" autofocus
+                required>
+            <input type="text" name="name" id="name">
+        </div>
+        <div>
+            <label for="kodepos">Kode Pos : </label>
+
+            <!-- Atribut pattern menggunakan regular expression -->
+            <input type="text" name="kodepos" id="kodepos" pattern="([1-9])[0-9]{4}$">
+        </div>
+
+        <!-- Di Mobile Device, jika Input Typenya adalah email maka di keyboard akan muncul tombol @ -->
+        <!-- Domain tidak divalidasi oleh Input Type email karena dianggap email local -->
+        <div>
+            <label for="email">Email : </label>
+            <input type="email" name="email" id="email">
+        </div>
+
+        <!-- Input Type tel kalau di Mobile Device keyboardnya jadi angka -->
+        <!-- Input Type tel butuh pattern -->
+        <div>
+            <label for="tel">No HP : </label>
+            <input type="tel" name="tel" id="tel" pattern="(\+62|62|0)8[1-9][0-9]{6,9}$">
+        </div>
+
+        <!-- Input Type url supaya input-an nya ada protokol di depannya http:// atau https:// -->
+        <div>
+            <label for="url">Website : </label>
+            <input type="url" name="url" id="url">
+        </div>
+        <div>
+            <label for="number">Angka : </label>
+            <input type="number" name="number" id="number" min="10" max="100" step="15">
+        </div>
+
+        <!-- Input Type range perlu di definisikan -->
+        <div>
+            <label for="range">Range : </label>
+            <span id="awal"></span>
+            <input type="range" name="range" id="range" min="0" max="100" step="10">
+            <span id="akhir"></span>
+        </div>
+        <div>
+            <label for="date">Tanggal : </label>
+            <input type="date" name="date" id="date">
+            <input type="month" name="month" id="month">
+            <input type="week" name="week" id="week">
+            <input type="time" name="time" id="time">
+        </div>
+        <div>
+            <label for="color">Warna : </label>
+            <input type="color" name="color" id="color">
+            <span id="hex"></span>
+        </div>
+        <div>
+            <button type="submit">Kirim</button>
+        </div>
+    </form>
+
+    <script>
+        const range = document.querySelector('#range');
+        const awal = document.querySelector('#awal');
+        const akhir = document.querySelector('#akhir');
+        const color = document.querySelector('#color');
+        const hex = document.querySelector('#hex');
+
+        awal.innerHTML = range.min;
+        akhir.innerHTML = range.value;
+        hex.innerHTML = color.value;
+
+        // Event input ada browser yang gak support (browser lama)
+        // Kalau browsernya gak support bisa pake 'change'
+        range.addEventListener('input', function () {
+            akhir.innerHTML = range.value;
+        });
+
+        color.addEventListener('input', function () {
+            hex.innerHTML = color.value;
+            hex.style.color = color.value;
+        });
+    </script>
+</body>
+
+</html>
