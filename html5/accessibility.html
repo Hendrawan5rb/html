@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" type="image/png" href="../img/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="../img/favicon-16x16.png" sizes="16x16" />
+
+    <title>Accessibility</title>
+
+    <style>
+        body {
+            background-color: #ddd;
+        }
+
+        #custom {
+            margin-top: 10px;
+            color: #999;
+            border: 1px solid black;
+            width: 100px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <!--
+    Web Accessibility Tips
+    - Buat Struktur DOM yang masuk akal
+    - Gunakan Semantic Element
+    - Kontrol yang sesuai (misal untuk button gunakan <button>)
+    - Beri label pada semua kontrol dan gambar
+    - Management fokus yang intuitif (misal tabindex)
+    - Buat website yang bisa diakses penuh hanya dengan menggunakan keyboard saja
+    - Tambahkan ARIA jika dibutuhkan
+    -->
+
+    <!--
+    DOM diterjemahkan menjadi GUI dan juga Accessibility Tree
+    Cara melihat Accessibility Tree : 
+    1. Chrome : Devtools -> Elements -> >> -> Accessibility
+    2. Mozilla : Devtools -> >> -> Accessibility
+    -->
+
+    <!--
+    <div> dan <span> tidak dianggap control oleh Screen Reader dan Tidak Focusable
+    -->
+
+    <label for="nama">Nama : </label>
+    <input type="text" name="nama" id="nama">
+
+    <!-- Hasilnya sama kayak yang atas -->
+    <label>
+        Alamat :
+        <input type="text" name="alamat">
+    </label>
+
+    <!--
+    Kalau gambar tidak diberi Atribut alt, maka yang akan dibaca oleh Screen Reader adalah nama gambarnya.
+    Oleh karena itu jika ada gambar yang hanya dekorasi, tambahkan Atribut alt="" supaya dilewati Screen Reader dan tidak dibaca nama gambarnya.
+    -->
+
+    <button onclick="alert('Button');">Tombol button</button>
+
+    <!-- Atribut tabindex="1" menjadi elemen pertama yang fokus ketika tekan tombol tab -->
+    <!-- Atribut tabindex="0" supaya ikut antrian tab yang seharusnya -->
+
+    <!-- Pastikan elemen kontrol yang custom bisa merespon tombol seperti Enter dan Spasi -->
+    <div id="custom" tabindex="0" onclick="showAlert('Halo');" role="button">Tombol div</div>
+
+    <!--
+    Accessibility Testing Tool
+    - Chrome Lighthouse
+    - WCAG (Web Content Accessibility Guidelines) : https://www.w3.org/WAI/standards-guidelines/wcag
+    -->
+
+    <script>
+        const showAlert = (text) => alert(text);
+        const custom = document.querySelector('#custom');
+
+        custom.addEventListener('keyup', function (e) {
+
+            // Supaya merespon ke tombol tertentu saja
+            // 32 kode untuk Spasi
+            // 13 kode untuk Enter
+            if (e.keyCode == 32 || e.keyCode == 13) {
+                showAlert('Halooo');
+            }
+        });
+    </script>
+
+</body>
+
+</html>
